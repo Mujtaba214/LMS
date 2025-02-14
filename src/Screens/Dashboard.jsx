@@ -38,7 +38,7 @@ const Dashboard = () => {
     return (
         <Box sx={{ padding: 1, bgcolor: "#f9f9f9", minHeight: "100vh" }}>
 
-            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, fontFamily: "Montserrat",textAlign:"center" }}>
+            <Typography variant="h4" sx={{ fontWeight: "bold", mb: 3, fontFamily: "Montserrat", textAlign: "center" }}>
                 Welcome Back, {userData.name}
             </Typography>
 
@@ -80,7 +80,7 @@ const Dashboard = () => {
                             }} variant="h6">Attendance</Typography>
                             <Typography sx={{
                                 fontFamily: "Montserrat"
-                            }} variant="h4">85%</Typography>
+                            }} variant="h4">92%</Typography>
                         </CardContent>
                     </Card>
                 </Grid>
