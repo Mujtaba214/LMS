@@ -55,7 +55,7 @@ function FeeVoucher() {
     <Paper elevation={3} sx={{ maxWidth: 800, margin: "auto", padding: 3, mt: 5 }}>
       <Typography sx={{
         paddingBottom: "10px",
-        fontFamily:"Montserrat"
+        fontFamily: "Montserrat"
       }} variant="h4" textAlign="center" fontWeight="bold" gutterBottom>
         Fee Voucher
       </Typography>
@@ -64,7 +64,7 @@ function FeeVoucher() {
         <Grid item xs={6}><Typography><strong>Student's First Name:</strong> {firstName}</Typography></Grid>
         <Grid item xs={6}><Typography><strong>Student's Last Name:</strong> {lastName}</Typography></Grid>
         <Grid item xs={6}><Typography><strong>Class:</strong> {classes}</Typography></Grid>
-        <Grid item xs={6}><Typography><strong>Class:</strong> {email}</Typography></Grid>
+        <Grid item xs={6}><Typography><strong>Email:</strong> {email}</Typography></Grid>
       </Grid>
 
       <TableContainer component={Paper} sx={{ mt: 2 }}>
@@ -100,7 +100,7 @@ function FeeVoucher() {
         variant="contained"
         // color="primary"
         fullWidth
-        sx={{ mt: 3, backgroundColor:"#008080"}}
+        sx={{ mt: 3, backgroundColor: "#008080" }}
         onClick={() => window.print()}
       >
         Print Voucher
