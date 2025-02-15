@@ -40,7 +40,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function StudentTable({ data }) {
-    const[refresh,setRefresh] = useState(true)
+    const[refresh,setRefresh] = useState(false)
     useEffect(() => {
         deleteData()
     },[refresh])
@@ -59,7 +59,8 @@ export default function StudentTable({ data }) {
             transition: Bounce,
         });
         navigate('/student/view-student')
-        setRefresh(!refresh)
+        setRefresh((prev)=>!prev)
+        // window.location.reload()
     }
 
     const navigate = useNavigate()

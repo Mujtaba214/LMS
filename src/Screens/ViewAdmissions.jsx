@@ -9,9 +9,10 @@ import AdmissionTable from "../Components/AdmissionTable";
 const ViewAdmissions = () => {
     const navigate = useNavigate();
     const [data, setData] = useState([])
+    const [refresh, setRefresh] = useState(false)
     useEffect(() => {
         getData()
-    }, [])
+    }, [refresh])
 
     const deleteData = async (id) => {
         await deleteDoc(doc(db, "admissions", id))
@@ -26,8 +27,8 @@ const ViewAdmissions = () => {
             theme: "light",
             transition: Bounce,
         });
-        // navigate('/school/view-school')
-        // setRefresh(!refresh)
+        navigate('/admission/view-admission')
+        setRefresh(!refresh)
     }
 
 

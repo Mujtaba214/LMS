@@ -10,9 +10,10 @@ import SyllabusTable from "../Components/SyllabusTable";
 const SyllabusList = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([])
+  const [refresh, setRefresh] = useState(false)
   useEffect(() => {
     getData()
-  }, [])
+  }, [refresh])
   const getData = async () => {
     try {
       let arr = [];
@@ -25,6 +26,7 @@ const SyllabusList = () => {
         })
       })
       setData([...arr])
+      setRefresh(!refresh)
     } catch (error) {
       console.log(error);
 

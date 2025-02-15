@@ -234,9 +234,10 @@ export default function SignUp(props) {
                     <Typography sx={{ textAlign: "center", fontFamily: "Montserrat" }}>
                         Already have an account?{" "}
                         <Link
-                            onClick={() => {
-                                navigate("/login");
-                            }}
+                            to='/login'
+                            // onClick={() => {
+                            //     navigate("/login");
+                            // }}
                             variant="body2"
                             sx={{
                                 fontFamily: "Montserrat",

@@ -40,16 +40,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function SubjectTable({ data }) {
-    const [refresh, setRefresh] = useState(true)
-    useEffect(() => {
-        deleteData()
-    }, [refresh])
-
+   
     const deleteData = async (id) => {
         await deleteDoc(doc(db, "subjects", id))
         toast.success("User Deleted successfully", {
             position: "top-right",
-            autoClose: 3000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: false,
             pauseOnHover: true,
@@ -59,7 +55,6 @@ export default function SubjectTable({ data }) {
             transition: Bounce,
         });
         navigate('/subjects/view-subjects')
-        setRefresh(!refresh)
     }
 
     const navigate = useNavigate()

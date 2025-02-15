@@ -13,9 +13,10 @@ import TeacherTable from "../Components/TeacherTable";
 const ViewTeacher = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([])
+  const [refresh, setRefresh] = useState(false)
   useEffect(() => {
     getData()
-  }, [])
+  }, [refresh])
   const getData = async () => {
     try {
       let arr = [];
@@ -28,6 +29,8 @@ const ViewTeacher = () => {
         })
       })
       setData([...arr])
+      setRefresh(!refresh)
+
     } catch (error) {
       console.log(error);
 

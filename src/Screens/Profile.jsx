@@ -43,22 +43,10 @@ const Profile = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 marginTop:"40px",
-                // justifyContent: "center",
                 height: "100vh",
                 bgcolor: "#f4f6f8", 
             }}
         >
-            {/* <Box
-                sx={{
-                    width: "100%",
-                    maxWidth: 600,
-                    bgcolor: "white",
-                    p: 4,
-                    borderRadius: 3,
-                    boxShadow: 3,
-                    textAlign: "center",
-                }}
-            > */}
                 <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2, fontFamily: "Montserrat" }}>
                     Profile
                 </Typography>

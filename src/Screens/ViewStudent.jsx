@@ -9,9 +9,10 @@ import StudentTable from "../Components/StudentTable";
 const ViewStudent = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([])
+  const[refresh,setRefresh] = useState(false)
   useEffect(() => {
     getData()
-  }, [])
+  }, [refresh])
   const getData = async () => {
     try {
       let arr = [];
@@ -24,6 +25,7 @@ const ViewStudent = () => {
         })
       })
       setData([...arr])
+      setRefresh(!refresh)
     } catch (error) {
       console.log(error);
 

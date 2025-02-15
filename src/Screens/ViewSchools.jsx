@@ -9,9 +9,10 @@ import SchoolTable from "../Components/SchoolTable";
 const ViewSchools = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([])
+  const [refresh, setRefresh] = useState(false)
   useEffect(() => {
     getData()
-  }, [])
+  }, [refresh])
 
   const deleteData = async (id) => {
     await deleteDoc(doc(db, "schools", id))
@@ -43,6 +44,7 @@ const ViewSchools = () => {
         })
       })
       setData([...arr])
+      setRefresh(!refresh)
     } catch (error) {
       console.log(error);
 

@@ -26,7 +26,7 @@ const Card = styled(MuiCard)(({ theme }) => ({
     flexDirection: "column",
     // alignSelf: "center",
     width: "90%",
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
     gap: theme.spacing(2),
     margin: "auto",
     [theme.breakpoints.up("sm")]: {
@@ -43,7 +43,7 @@ const Card = styled(MuiCard)(({ theme }) => ({
 const SignInContainer = styled(Stack)(({ theme }) => ({
     height: "calc((1 - var(--template-frame-height, 0)) * 100dvh)",
     minHeight: "100%",
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
     [theme.breakpoints.up("sm")]: {
         padding: theme.spacing(3),
     },
@@ -120,10 +120,7 @@ export default function Login(props) {
     };
 
     return (
-        <SignInContainer direction="column" sx={{
-            // paddingLeft: "-20px",
-            // justifyContent:"center"
-        }}>
+        <SignInContainer direction="column">
             <Card variant="outlined">
                 <Typography
                     component="h1"
@@ -211,7 +208,9 @@ export default function Login(props) {
                     <Typography sx={{ textAlign: "center", fontFamily: "Montserrat", }}>
                         Don&apos;t have an account?{" "}
                         <Link
-                            onClick={() => navigate('/signup')}
+                            onClick={() => {
+                                navigate("/signup");
+                            }}
                             variant="body2"
                             sx={{
                                 fontFamily: "Montserrat",
