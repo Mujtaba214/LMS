@@ -9,7 +9,6 @@ import { doc, getDoc } from "firebase/firestore";
 
 const Dashboard = () => {
     const [userData, setUserData] = useState("");
-    // const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -26,14 +25,10 @@ const Dashboard = () => {
             } else {
                 navigate("/login");
             }
-            // setLoading(false);
         });
 
         return () => unsubscribe();
     }, [navigate]);
-
-    // console.log(userData);
-
 
     return (
         <Box sx={{ padding: 1, bgcolor: "#f9f9f9", minHeight: "100vh" }}>

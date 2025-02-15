@@ -13,7 +13,6 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
-// import ForgotPassword from "../components/ForgotPassword";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
@@ -21,7 +20,6 @@ import { db } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import auth from "../firebaseConfig";
 
 const Card = styled(MuiCard)(({ theme }) => ({
     display: "flex",
@@ -71,56 +69,28 @@ export default function Login(props) {
     const [passwordError, setPasswordError] = React.useState(false);
     const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
     const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-
-    // Handle Submit
-
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         signInWithEmailAndPassword(auth, email, password).then(async (res) => {
-            console.log(res.user.uid);
-
-            localStorage.setItem("uid", res.user.uid)
-
-            const getData = await getDoc(doc(db, "users", res.user.uid))
-
-            console.log(getData.data());
-
-            localStorage.setItem("userData", JSON.stringify(getData.data()))
-            navigate('/dashboard')
-
+            localStorage.setItem("uid", res.user.uid);
+            const getData = await getDoc(doc(db, "users", res.user.uid));
+            localStorage.setItem("userData", JSON.stringify(getData.data()));
+            navigate("/dashboard");
         }).catch((err) => {
-            console.log(err);
             if (err.code === "auth/user-not-found") {
                 toast.error("No account found with this email.");
             } else if (err.code === "auth/wrong-password") {
                 toast.error("Incorrect password. Please try again.");
-            }
-            else if (err.code === "auth/invalid-credential") {
-                toast.error("Invalid details. Please try again.");
-            }
-            else {
+            } else {
                 toast.error("Login failed. Please check your details.");
             }
-
-
-        })
-
-    }
-
+        });
+    };
 
     const validateInputs = () => {
         const email = document.getElementById("email");
@@ -150,108 +120,106 @@ export default function Login(props) {
     };
 
     return (
-        <>
-            <SignInContainer direction="column" justifyContent="center">
-                <Card variant="outlined">
-                    <Typography
-                        component="h1"
-                        variant="h4"
-                        sx={{
-                            width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)",
-                            fontFamily: "Montserrat", textAlign: "center"
-                        }}
-                    >
-                        Sign in
-                    </Typography>
-                    <Box
-                        component="form"
-                        onSubmit={handleSubmit}
-                        noValidate
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            width: "100%",
-                            gap: 2,
-                        }}
-                    >
-                        <FormControl>
-                            <FormLabel
-                                sx={{
-                                    fontFamily: "Montserrat",
-                                }} htmlFor="email">Email</FormLabel>
-                            <TextField
-                                sx={{
-                                    fontFamily: "Montserrat",
-                                }}
-                                onChange={(e) => {
-                                    setEmail(e.target.value);
-                                }}
-                                error={emailError}
-                                helperText={emailErrorMessage}
-                                id="email"
-                                type="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                autoComplete="email"
-                                autoFocus
-                                required
-                                fullWidth
-                                variant="outlined"
-                                color={emailError ? "error" : "primary"}
-                            />
-                        </FormControl>
-                        <FormControl>
-                            <FormLabel sx={{
-                                fontFamily: "Montserrat",
-                            }} htmlFor="password">Password</FormLabel>
-                            <TextField
-                                onChange={(e) => {
-                                    setPassword(e.target.value);
-                                }}
-                                error={passwordError}
-                                helperText={passwordErrorMessage}
-                                name="password"
-                                placeholder="••••••"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                                autoFocus
-                                required
-                                fullWidth
-                                variant="outlined"
-                                color={passwordError ? "error" : "primary"}
-                            />
-                        </FormControl>
-                        <Button sx={{
-                            fontFamily: "Montserrat",
-                            bgcolor: "#008080"
-                        }} type="submit" fullWidth variant="contained">
-                            Sign in
-                        </Button>
-                    </Box>
-                    <Divider sx={{
+        <SignInContainer direction="column" justifyContent="center">
+            <Card variant="outlined">
+                <Typography
+                    component="h1"
+                    variant="h4"
+                    sx={{
+                        fontSize: "clamp(2rem, 10vw, 2.15rem)",
                         fontFamily: "Montserrat",
-                    }}>or</Divider>
-                    <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                        <Typography sx={{ textAlign: "center", fontFamily: "Montserrat", }}>
-                            Don&apos;t have an account?{" "}
-                            <Link
-                                onClick={() => {
-                                    navigate('/signup')
-                                }}
-                                variant="body2"
-                                sx={{
-                                    fontFamily: "Montserrat",
-                                    color: "#008080",
-                                    cursor: "pointer"
-                                }}
-                            >
-                                Sign up
-                            </Link>
-                        </Typography>
-                    </Box>
-                </Card>
-            </SignInContainer>
-        </>
+                        textAlign: "center",
+                    }}
+                >
+                    Sign in
+                </Typography>
+                <Box
+                    component="form"
+                    onSubmit={handleSubmit}
+                    noValidate
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "100%",
+                        gap: 2,
+                    }}
+                >
+                    <FormControl>
+                        <FormLabel
+                            sx={{
+                                fontFamily: "Montserrat",
+                            }} htmlFor="email">Email</FormLabel>
+                        <TextField
+                            sx={{
+                                fontFamily: "Montserrat",
+                            }}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                            error={emailError}
+                            helperText={emailErrorMessage}
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            autoComplete="email"
+                            autoFocus
+                            required
+                            fullWidth
+                            variant="outlined"
+                            color={emailError ? "error" : "primary"}
+                        />
+                    </FormControl>
+                    <FormControl>
+                        <FormLabel sx={{
+                            fontFamily: "Montserrat",
+                        }} htmlFor="password">Password</FormLabel>
+                        <TextField
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                            error={passwordError}
+                            helperText={passwordErrorMessage}
+                            name="password"
+                            placeholder="••••••"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                            autoFocus
+                            required
+                            fullWidth
+                            variant="outlined"
+                            color={passwordError ? "error" : "primary"}
+                        />
+                    </FormControl>
+                    <Button sx={{
+                        fontFamily: "Montserrat",
+                        bgcolor: "#008080",
+                        ":hover": { bgcolor: "#004c4c" },
+                    }} type="submit" fullWidth variant="contained">
+                        Sign in
+                    </Button>
+                </Box>
+                <Divider sx={{
+                    fontFamily: "Montserrat",
+                }}>or</Divider>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    <Typography sx={{ textAlign: "center", fontFamily: "Montserrat", }}>
+                        Don&apos;t have an account?{" "}
+                        <Link
+                            onClick={() => navigate('/signup')}
+                            variant="body2"
+                            sx={{
+                                fontFamily: "Montserrat",
+                                color: "#008080",
+                                cursor: "pointer"
+                            }}
+                        >
+                            Sign up
+                        </Link>
+                    </Typography>
+                </Box>
+            </Card>
+        </SignInContainer>
     );
 }
