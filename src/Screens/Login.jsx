@@ -24,13 +24,13 @@ import { toast } from "react-toastify";
 const Card = styled(MuiCard)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
-    alignSelf: "center",
-    width: "100%",
-    padding: theme.spacing(4),
+    // alignSelf: "center",
+    width: "90%",
+    padding: theme.spacing(2),
     gap: theme.spacing(2),
     margin: "auto",
     [theme.breakpoints.up("sm")]: {
-        maxWidth: "450px",
+        maxWidth: "400px",
     },
     boxShadow:
         "hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px",
@@ -45,7 +45,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
     minHeight: "100%",
     padding: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
-        padding: theme.spacing(4),
+        padding: theme.spacing(3),
     },
     "&::before": {
         content: '""',
@@ -120,7 +120,10 @@ export default function Login(props) {
     };
 
     return (
-        <SignInContainer direction="column" justifyContent="center">
+        <SignInContainer direction="column" sx={{
+            // paddingLeft: "-20px",
+            // justifyContent:"center"
+        }}>
             <Card variant="outlined">
                 <Typography
                     component="h1"
@@ -140,6 +143,7 @@ export default function Login(props) {
                     sx={{
                         display: "flex",
                         flexDirection: "column",
+                        justifyContent:"center",
                         width: "100%",
                         gap: 2,
                     }}

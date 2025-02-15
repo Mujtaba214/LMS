@@ -12,15 +12,15 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { useState } from "react";
 
 const Card = styled(MuiCard)(({ theme }) => ({
     display: "flex",
     flexDirection: "column",
-    alignSelf: "center",
+    // alignSelf: "center",
     width: "100%",
-    padding: theme.spacing(4),
+    padding: theme.spacing(2),
     gap: theme.spacing(2),
     margin: "auto",
     boxShadow:
@@ -37,7 +37,7 @@ const Card = styled(MuiCard)(({ theme }) => ({
 const SignUpContainer = styled(Stack)(({ theme }) => ({
     height: "calc((1 - var(--template-frame-height, 0)) * 100dvh)",
     minHeight: "100%",
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     [theme.breakpoints.up("sm")]: {
         padding: theme.spacing(4),
     },
@@ -138,7 +138,7 @@ export default function SignUp(props) {
     };
 
     return (
-        <SignUpContainer direction="column" justifyContent="space-between">
+        <SignUpContainer direction="column" >
             <Card variant="outlined">
                 <Typography
                     component="h1"
